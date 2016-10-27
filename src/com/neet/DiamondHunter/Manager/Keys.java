@@ -19,24 +19,15 @@ public class Keys {
 	public static boolean keyState[] = new boolean[NUM_KEYS];
 	public static boolean prevKeyState[] = new boolean[NUM_KEYS];
 	
-	public static int K1 = 0;
-	public static int K2 = 1;
-	public static int K3 = 2;
-	public static int K4 = 3;
-	public static int K5 = 4;
-	public static int K6 = 5;
-	public static int K7 = 6;
-	public static int K8 = 7;
+	public static int keys[] = {KeyEvent.VK_UP, KeyEvent.VK_LEFT, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_SPACE,
+			KeyEvent.VK_ENTER, KeyEvent.VK_ESCAPE, KeyEvent.VK_F1};
 	
 	public static int keySet(int i, boolean b) {
-		if(i == KeyEvent.VK_UP) keyState[K1] = b;
-		else if(i == KeyEvent.VK_LEFT) keyState[K2] = b;
-		else if(i == KeyEvent.VK_DOWN) keyState[K3] = b;
-		else if(i == KeyEvent.VK_RIGHT) keyState[K4] = b;
-		else if(i == KeyEvent.VK_SPACE) keyState[K5] = b;
-		else if(i == KeyEvent.VK_ENTER) keyState[K6] = b;
-		else if(i == KeyEvent.VK_ESCAPE) keyState[K7] = b;
-		else if(i == KeyEvent.VK_F1) keyState[K8] = b;
+		for (int j = 0; j<keys.length; j++){
+			if(i == keys[j]){
+				keyState[j] = b;
+			}
+		}
 		return 0;
 	}
 	

@@ -18,10 +18,14 @@ public class IntroState extends GameState {
 	
 	private int alpha;
 	private int ticks;
-	
-	private final int FADE_IN = 60;
-	private final int LENGTH = 60;
-	private final int FADE_OUT = 60;
+
+	//TODO CHANGE BACK TO 60
+	private final int FADE_IN = 0;
+	private final int LENGTH = 0;
+	private final int FADE_OUT = 0;
+//	private final int FADE_IN = 60;
+//	private final int LENGTH = 60;
+//	private final int FADE_OUT = 60;
 	
 	public IntroState(GameStateManager gsm) {
 		super(gsm);
@@ -62,7 +66,7 @@ public class IntroState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.K6)) {
+		if(Keys.isPressed(5)) {
 			gsm.setState(GameStateManager.MENU);
 		}
 	}

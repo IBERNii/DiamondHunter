@@ -112,63 +112,45 @@ public class PlayState extends GameState {
 	}
 	
 	private void populateDiamonds() {
-		
-		Diamond d;
-		
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 20);
-		d.addChange(new int[] { 23, 19, 1 });
-		d.addChange(new int[] { 23, 20, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(12, 36);
-		d.addChange(new int[] { 31, 17, 1 });
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(28, 4);
-		d.addChange(new int[] {27, 7, 1});
-		d.addChange(new int[] {28, 7, 1});
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 34);
-		d.addChange(new int[] { 31, 21, 1 });
-		diamonds.add(d);
-		
-		d = new Diamond(tileMap);
-		d.setTilePosition(28, 19);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(35, 26);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(38, 36);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(27, 28);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 30);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(14, 25);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 21);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(9, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(4, 3);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(20, 14);
-		diamonds.add(d);
-		d = new Diamond(tileMap);
-		d.setTilePosition(13, 20);
-		diamonds.add(d);
-		
+		placeDiamond(20,20, new int[] {23, 19, 1 }, new int[] { 23, 20, 1 });
+		placeDiamond(12, 36, new int[] { 31, 17, 1 });
+		placeDiamond(28, 4, new int[] {27, 7, 1}, new int[] {28, 7, 1});
+		placeDiamond(4, 34, new int[] { 31, 21, 1 });
+		placeDiamond(28,19);
+		placeDiamond(35,26);
+		placeDiamond(38,36);
+		placeDiamond(27,28);
+		placeDiamond(20,30);
+		placeDiamond(14,25);
+		placeDiamond(4,21);
+		placeDiamond(9,14);
+		placeDiamond(4,3);
+		placeDiamond(20,214);
+		placeDiamond(13,20);
 	}
+	
+	private void placeDiamond(int x, int y){
+		int [] change1 = null;
+		int [] change2 = null;
+		placeDiamond(x, y, change1, change2);
+	}
+	
+	private void placeDiamond(int x, int y, int[] change1){
+		int [] change2 = null;
+		placeDiamond(x, y, change1, change2);
+	}
+	
+	private void placeDiamond(int x, int y, int[] change1, int[] change2){
+		Diamond d = new Diamond(tileMap);
+		d.setTilePosition(x, y);
+		if(change1 != null)
+			d.addChange(change1);
+		if(change2 != null)
+			d.addChange(change2);
+		
+		diamonds.add(d);
+	}
+	
 	
 	private void populateItems() {
 		
@@ -313,16 +295,16 @@ public class PlayState extends GameState {
 	}
 	
 	public void handleInput() {
-		if(Keys.isPressed(Keys.K7)) {
+		if(Keys.isPressed(6)) {
 			JukeBox.stop("music1");
 			gsm.setPaused(true);
 		}
 		if(blockInput) return;
-		if(Keys.isDown(Keys.K2)) player.setLeft();
-		if(Keys.isDown(Keys.K4)) player.setRight();
-		if(Keys.isDown(Keys.K1)) player.setUp();
-		if(Keys.isDown(Keys.K3)) player.setDown();
-		if(Keys.isPressed(Keys.K5)) player.setAction();
+		if(Keys.isDown(1)) player.setLeft();
+		if(Keys.isDown(3)) player.setRight();
+		if(Keys.isDown(0)) player.setUp();
+		if(Keys.isDown(2)) player.setDown();
+		if(Keys.isPressed(3)) player.setAction();
 	}
 	
 	//===============================================
